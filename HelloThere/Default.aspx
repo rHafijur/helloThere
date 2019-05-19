@@ -1,42 +1,36 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="HelloThere._Default" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="HelloThere" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
+    <script runat="server">
+        public DataTable messages;
+    </script>
 
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
+    <div style="padding-top:20px; padding-bottom:20px;" class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <h2 style="padding-top:20px; padding-bottom:20px;">Chats:</h2>
+             <div class="list-group">
+         <% foreach (DataRow dr in friends.Rows)
+             {
+                 int friend_id = dr.Field<int>("friend_id");
+                 DataTable user = db.GetTable("SELECT name from users where id='"+friend_id+"'");
+                 string f_name = user.Rows[0].Field<string>("name");
+                 messages=db.GetTable("SELECT * FROM messages WHERE (user_id='"+auth_id+"' AND target_user_id='"+friend_id+ "') OR (user_id='" + friend_id + "' AND target_user_id='" + auth_id + "') ORDER BY id DESC LIMIT 1");
+                 %>
+                 <a href="Message?user=<%=friend_id %>" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1"><%= f_name %></h5>
+      <small></small>
+    </div>
+    <p class="mb-1"><%=messages.Rows[0].Field<string>("text") %></p>
+  </a>
+
+            <% } %>
+                 </div>
         </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
+
     </div>
 
 </asp:Content>

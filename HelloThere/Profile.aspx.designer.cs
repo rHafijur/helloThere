@@ -10,60 +10,69 @@
 namespace HelloThere {
     
     
-    public partial class SiteMaster {
+    public partial class Profile {
         
         /// <summary>
-        /// regularButton control.
+        /// ImageUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl regularButton;
+        protected global::System.Web.UI.WebControls.FileUpload ImageUpload;
         
         /// <summary>
-        /// divBuckup control.
+        /// RegularExpressionValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divBuckup;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
         
         /// <summary>
-        /// Search control.
+        /// btnUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Search;
+        protected global::System.Web.UI.WebControls.Button btnUpload;
         
         /// <summary>
-        /// keyword control.
+        /// edit_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl keyword;
+        protected global::System.Web.UI.WebControls.TextBox edit_name;
         
         /// <summary>
-        /// authbutton control.
+        /// edit_phone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl authbutton;
+        protected global::System.Web.UI.WebControls.TextBox edit_phone;
         
         /// <summary>
-        /// MainContent control.
+        /// edit_profession control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.TextBox edit_profession;
+        
+        /// <summary>
+        /// edit_about control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox edit_about;
     }
 }

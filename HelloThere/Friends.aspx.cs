@@ -8,19 +8,14 @@ using System.Web.UI.WebControls;
 
 namespace HelloThere
 {
-    public partial class _Default : Page
+    public partial class Friends : System.Web.UI.Page
     {
-        public DataTable friends;
-        public DB db;
-        public int? auth_id;
         protected void Page_Load(object sender, EventArgs e)
         {
             MiddleWare.Auth(Response);
-            db = new DB();
-            auth_id = Auth.id();
-            friends = db.GetTable("select * from friendships where user_id='"+Auth.id()+"'");
+            DataTable dataTable = new DB().GetTable("SELECT users.* FROM users JOIN friendships ON friendships.friend_id=users.id WHERE friendships.user_id='"+Auth.id()+"'");
+            friends.DataSource = dataTable;
+            friends.DataBind();
         }
-
     }
-
 }
